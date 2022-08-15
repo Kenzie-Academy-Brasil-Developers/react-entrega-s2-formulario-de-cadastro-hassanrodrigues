@@ -10,15 +10,18 @@ import Footer from "../../components/Footer/index";
 import { H2 } from "../../styles/Titles";
 
 const DashboardPage = () => {
-  const [dataUserID, setDataUserID] = useState(null);
-  const [dataUserModule, setDataUserModule] = useState(null);
+  const [UserId, setUserId] = useState(null);
+  const [UserModule, setUserModule] = useState(null);
 
   useEffect(() => {
     const userID = localStorage.getItem("@userID");
-    api.get(`/users/${userID}`).then((response) => {
-      setDataUserID(response.data.name);
-      setDataUserModule(response.data.course_module);
-    }, []);
+    api
+      .get(`/users/${userID}`)
+      .then((response) => {
+        setUserId(response.data.name);
+        setUserModule(response.data.course_module);
+      }, [])
+      .catch((err) => console.log(err));
   });
 
   const navigate = useNavigate();
@@ -40,8 +43,8 @@ const DashboardPage = () => {
           </GrayButton>
         </Dashboard>
         <SectionUser>
-          <H2>{dataUserID}</H2>
-          <p className="msgRegister">{dataUserModule}</p>
+          <H2>{UserId}</H2>
+          <p className="msgRegister">{UserModule}</p>
         </SectionUser>
         <Footer>
           <H2>Que pena! Estamos em desenvolvimento :</H2>

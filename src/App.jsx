@@ -5,7 +5,10 @@ import RoutesKenzieHub from "./routes/index";
 
 function App() {
   useEffect(() => {
-    api.get("users").then((response) => console.log(response));
+    api
+      .get("users")
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
   });
   return (
     <div className="App">
