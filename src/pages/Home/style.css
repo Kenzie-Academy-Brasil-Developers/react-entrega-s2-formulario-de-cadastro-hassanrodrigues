@@ -1,0 +1,51 @@
+@media screen and (max-width: 540px) {
+  .buttonRegister {
+    font-family: Inter, Helvetica, Arial;
+    font-size: 14px;
+    background-color: #868e96;
+    color: #ffffff;
+    width: 264px;
+    height: 38px;
+    font-weight: 500;
+    border-radius: 4px;
+    border: 1.2px solid #868e96;
+    cursor: pointer;
+  }
+  .button_Register:hover {
+    background-color: #343b41;
+    border: 1.2px solid #343b41;
+  }
+  .logoLogin {
+    font-family: Inter, Helvetica, Arial;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ff577f;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 541px) {
+  .buttonRegister {
+    font-family: Inter, Helvetica, Arial;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    width: 340px;
+    height: 48px;
+    background-color: #868e96;
+    border-radius: 4px;
+    border: 1.2px solid #868e96;
+    cursor: pointer;
+  }
+  .buttonRegister:hover {
+    background-color: #343b41;
+    border: 1.2px solid #343b41;
+  }
+  .logoLogin {
+    font-family: Inter, Helvetica, Arial;
+    font-size: 26px;
+    font-weight: 700;
+    color: #ff577f;
+    margin-bottom: 30px;
+  }
+}
