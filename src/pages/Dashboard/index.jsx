@@ -10,7 +10,7 @@ import Footer from "../../components/Footer/index";
 import { H2 } from "../../styles/Titles";
 
 const DashboardPage = () => {
-  const [UserId, setUserId] = useState(null);
+  const [UserName, setUserName] = useState(null);
   const [UserModule, setUserModule] = useState(null);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const DashboardPage = () => {
     api
       .get(`/users/${userID}`)
       .then((response) => {
-        setUserId(response.data.name);
+        setUserName(response.data.name);
         setUserModule(response.data.course_module);
       }, [])
       .catch((err) => console.log(err));
@@ -43,7 +43,7 @@ const DashboardPage = () => {
           </GrayButton>
         </Dashboard>
         <SectionUser>
-          <H2>{UserId}</H2>
+          <H2>{UserName}</H2>
           <p className="msgRegister">{UserModule}</p>
         </SectionUser>
         <Footer>
