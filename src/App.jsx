@@ -1,20 +1,14 @@
-import { useEffect } from "react";
-import "./App.css";
-import api from "./services/api";
-import RoutesKenzieHub from "./routes/index";
+import Global from "./styles/Global";
+import Routes from "./routes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  useEffect(() => {
-    api
-      .get("users")
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
-  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <RoutesKenzieHub />
-      </header>
+    <div>
+      <Global />
+      <ToastContainer />
+      <Routes />
     </div>
   );
 }

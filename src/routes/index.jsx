@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home/index";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
+import Home from "../pages/Login";
 
 function RouteKenzieHub() {
   return (
