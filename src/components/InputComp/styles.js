@@ -28,7 +28,7 @@ export const Container = styled.div`
   }
 `;
 export const Error = styled.div`
-  position: relative;
+  position: absolute;
 
   span {
     font-size: 0.8rem;
@@ -40,7 +40,7 @@ export const Error = styled.div`
     opacity: 0;
     position: absolute;
     transition: 0.2s;
-    z-index: 2;
+    z-index: 1;
 
     ::before {
       content: "";

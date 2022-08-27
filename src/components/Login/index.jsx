@@ -26,14 +26,14 @@ const Login = () => {
           <Input
             id="email"
             register={register}
-            error={errors?.email}
+            err={errors?.email}
             label="Email"
             placeholder="Digite aqui seu email"
           />
           <PasswordLogin
             id="password"
             register={register}
-            error={errors?.password}
+            err={errors?.password}
             label="Senha"
             placeholder="Digite aqui sua senha"
           />
