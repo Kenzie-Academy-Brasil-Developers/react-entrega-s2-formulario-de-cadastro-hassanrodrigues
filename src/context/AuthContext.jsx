@@ -33,11 +33,14 @@ const AuthProvider = ({ children }) => {
         const { data } = await api.get("/profile");
         setUser(data);
         setTechs(data.techs);
+        navigate("/dashboard", { replace: true });
+
       } catch (error) {
         console.error(error);
       }
     }
     setLoading(false);
+   
   }
   useEffect(() => {
     loadUser();
@@ -51,9 +54,9 @@ const AuthProvider = ({ children }) => {
       setUser(userResponse);
       setTechs(userResponse.techs);
       localStorage.setItem("@kenzie-hub:token", token);
-      const navigateTo = location.state?.from?.pathname || "/dashboard";
-      navigate(navigateTo, { replace: true });
+ 
       login();
+      navigate("/dashboard", { replace: true });
     } catch (error) {
       loginError();
     }
