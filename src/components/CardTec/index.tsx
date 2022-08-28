@@ -1,7 +1,9 @@
 import { Card } from "./styles";
-import { useAuth } from "../../context/AuthContext";
-
-function CardList({ tec }) {
+import {ITech, useAuth } from "../../context/AuthContext";
+interface ITechCardProp {
+  tec: ITech
+}
+function CardList({ tec }:ITechCardProp) {
   const { setModal, setTech, deleteTech } = useAuth();
 
   function handleClick() {

@@ -1,6 +1,21 @@
 import { BiErrorAlt } from "react-icons/bi";
 import { Container, Error } from "./styles";
-export const Input = ({ id, register, err, label, placeholder }) => (
+interface IInputProps {
+  id: string;
+  register: any;
+  err: any;
+  label: string;
+  placeholder: string;
+}
+interface IPasswordProps {
+  id: string;
+  register: any;
+  err: any;
+  label: string;
+  placeholder: string;
+}
+
+export const Input = ({ id, register, err, label, placeholder }:IInputProps) => (
   <>
     <label htmlFor={id}>{label}</label>
     <Container>
@@ -15,7 +30,7 @@ export const Input = ({ id, register, err, label, placeholder }) => (
   </>
 );
 
-export const Password = ({ id, register, err, label, placeholder }) => (
+export const Password = ({ id, register, err, label, placeholder }:IPasswordProps) => (
   <>
     <label htmlFor={id}>{label}</label>
     <Container>

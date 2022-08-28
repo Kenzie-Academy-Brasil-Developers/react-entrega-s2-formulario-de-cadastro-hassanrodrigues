@@ -8,7 +8,7 @@ const Register = () => {
 
   return (
     <>
-      <NavRegister onClickFunc={() => navigate(`/`)} label={"Voltar"} />
+      <NavRegister onClickFunc={() => navigate(`/`)} />
       <Main>
         <RegisterForm />
       </Main>

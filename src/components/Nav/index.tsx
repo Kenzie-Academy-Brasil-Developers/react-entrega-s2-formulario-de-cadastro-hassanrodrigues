@@ -1,8 +1,8 @@
 import { Nav as N } from "./styles";
 import { Container } from "./styles";
-import Svg from "../../components/Svg";
+import Svg from "../Svg";
 
-export function NavDash({ onClickFunc }) {
+export function NavDash({ onClickFunc }:any) {
   return (
     <N>
       <div>
@@ -13,7 +13,7 @@ export function NavDash({ onClickFunc }) {
   );
 }
 
-export const NavRegister = ({ onClickFunc }) => {
+export const NavRegister = ({ onClickFunc }:any) => {
   return (
     <Container>
       <div>

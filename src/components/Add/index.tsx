@@ -2,10 +2,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { MdClose } from "react-icons/md";
 import { Form } from "./styles";
-import { useAuth } from "../../context/AuthContext";
+import { INewTech,useAuth } from "../../context/AuthContext";
 import { Input } from "../InputComp";
 import { createSchema } from "../../validators/tec";
-import Label from "./../Label";
 
 function Add() {
   const { setModal, saveNewTech } = useAuth();
@@ -13,7 +12,7 @@ function Add() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(createSchema) });
+  } = useForm<INewTech>({ resolver: yupResolver(createSchema) });
   return (
     <>
       <div>
@@ -26,11 +25,11 @@ function Add() {
         <Input
           id="title"
           register={register}
-          error={errors?.title}
+          err={errors?.title}
           label="Nome"
           placeholder="Tecnologia"
         />
-        <Label htmlFor="status">Selecionar status</Label>
+        <label htmlFor="status">Selecionar status</label>
         <select id="status" {...register("status")}>
           <option value="Iniciante">Iniciante</option>
           <option value="Intermediário">Intermediário</option>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { userLogin as schema } from "../../validators/registerUser";
 import { Input, Password } from "../InputComp";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth ,IUserRegister} from "../../context/AuthContext";
 import { Container } from "./styles";
 
 function Register() {
@@ -13,7 +13,7 @@ function Register() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm<IUserRegister>({ resolver: yupResolver(schema) });
 
   return (
     <>
@@ -26,42 +26,42 @@ function Register() {
           <Input
             id="name"
             register={register}
-            error={errors?.name}
+            err={errors?.name}
             placeholder="Digite aqui seu nome!"
             label="Nome"
           />
           <Input
             id="email"
             register={register}
-            error={errors?.email}
+            err={errors?.email}
             placeholder="Digite aqui seu email!"
             label="Email"
           />
           <Password
             id="password"
             register={register}
-            error={errors?.password}
+            err={errors?.password}
             placeholder="Digite aqui seu senha!"
             label="Senha"
           />
           <Password
             id="confirmPassword"
             register={register}
-            error={errors?.confirmPassword}
+            err={errors?.confirmPassword}
             placeholder="Digite aqui seu senha!"
             label="Confirmar senha"
           />
           <Input
             id="bio"
             register={register}
-            error={errors?.bio}
+            err={errors?.bio}
             placeholder="Digite aqui sua biografia!"
             label="Bio"
           />
           <Input
             id="contact"
             register={register}
-            error={errors?.contact}
+            err={errors?.contact}
             placeholder="(99) 99999-9999"
             label="Contato"
           />

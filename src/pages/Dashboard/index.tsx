@@ -7,12 +7,12 @@ import MainModal from "../../components/Modal";
 import Header from "../../components/Header";
 
 const Dashboard = () => {
-  const {  modal } = useAuth();
+  const { logout, modal } = useAuth();
 
   return (
     <>
       {modal && <MainModal />}
-      <Nav  />
+      <Nav onClickFunc={logout} />
       <Header />
 
       <Main>

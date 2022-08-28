@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState,ReactNode } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import api from "../services/api";
 import {
   register,
@@ -67,12 +67,24 @@ export interface IUserData {
   updated_at: string;
   avatar_url: null;
 }
+export interface INewTechPostId {
+  id: string;
+}
+
+interface INewTechPost {
+  id: string;
+  title: string;
+  status: string;
+  user: INewTechPostId;
+  created_at: string;
+  updated_at: string;
+}
 
 interface ILoginUser {
   user: IUserData;
   token: string;
 }
-export type IEditTech = Omit<INewTech, "title">;
+export type IEditTech = Omit<INewTech,"title">;
 
 interface IAuthContext {
   user: IUser | null;
@@ -145,14 +157,10 @@ const AuthProvider = ({ children }:IAuthProviderProps) => {
         navigate("/dashboard", { replace: true });
         login();
       })
-      .catch((error) => loginError());
+      .catch(() => loginError());
   }
 
-  function logOut(): void {
-    setUser(null);
-    localStorage.clear();
-    logoutToast();
-  }
+
 
   function logout() {
     setUser(null);
@@ -163,7 +171,7 @@ const AuthProvider = ({ children }:IAuthProviderProps) => {
 
   async function registerUser( data:IUserRegister): Promise<void> {
     try {
-      const response = await api.post("/users", data);
+      await api.post("/users", data);
       navigate(`/`, { replace: true });
       register();
     } catch (error) {
@@ -173,7 +181,12 @@ const AuthProvider = ({ children }:IAuthProviderProps) => {
 
   async function saveNewTech(data:INewTech):Promise<void> {
     try {
-      const response = await api.post(`/users/techs/`, data);
+      const token = localStorage.getItem("@kenzie-hub:token");
+     await api.post<INewTechPost>("/users/techs/", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       create();
       loadUser();
       setModal(null);
@@ -184,7 +197,7 @@ const AuthProvider = ({ children }:IAuthProviderProps) => {
 
   async function editTech(data:IEditTech):Promise<void> {
     try {
-      const response = await api.put(`/users/techs/${tech?.id}`, data);
+      await api.put(`/users/techs/${tech?.id}`, data);
       edit();
       loadUser();
       setModal(null);
@@ -194,9 +207,14 @@ const AuthProvider = ({ children }:IAuthProviderProps) => {
   }
 
   async function deleteTech():Promise<void> {
+    const token = localStorage.getItem("@kenzie-hub:token");
     try {
-      const response = await api.delete(`/users/techs/${tech?.id}`);
-      removeTecnologh();
+    await api.delete<INewTechPostId>(`/users/techs/${tech?.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await removeTecnologh();
       loadUser();
       setModal(null);
     } catch (error) {

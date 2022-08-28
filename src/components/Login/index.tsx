@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormContainer } from "./styles";
 import { userLogin as schema } from "../../validators/loginUser";
 import { Input } from "../InputComp";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth,IUserLogin } from "../../context/AuthContext";
 import PasswordLogin from "../LoginPassword";
 
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IUserLogin>({
     resolver: yupResolver(schema),
   });
 

@@ -3,8 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { MdClose } from "react-icons/md";
 import { editSchema } from "../../validators/tec";
 import { Form } from "./styles";
-import { useAuth } from "../../context/AuthContext";
-import Label from "../Label/";
+import {IEditTech, useAuth } from "../../context/AuthContext";
 
 function Edit() {
   const { setModal, tech, editTech } = useAuth();
@@ -12,8 +11,7 @@ function Edit() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(editSchema) });
+  } = useForm<IEditTech>({ resolver: yupResolver(editSchema) });
 
   return (
     <>
@@ -24,10 +22,10 @@ function Edit() {
         </button>
       </div>
       <Form onSubmit={handleSubmit(editTech)}>
-        <Label htmlFor="title">Tecnologia</Label>
-        <input id="title" value={tech.title} disabled />
-        <Label htmlFor="status">Status</Label>
-        <select id="status" {...register("status")} defaultValue={tech.status}>
+        <label htmlFor="title">Tecnologia</label>
+        <input id="title" value={tech?.title} disabled />
+        <label htmlFor="status">Status</label>
+        <select id="status" {...register("status")} defaultValue={tech?.status}>
           <option value="Iniciante">Iniciante</option>
           <option value="Intermediário">Intermediário</option>
           <option value="Avançado">Avançado</option>
