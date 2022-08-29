@@ -17,7 +17,7 @@ function Edit() {
     <>
       <div>
         <h3>Tecnologia - Detalhes</h3>
-        <button onClick={() => setModal(null)}>
+        <button onClick={() => setModal("")}>
           <MdClose />
         </button>
       </div>

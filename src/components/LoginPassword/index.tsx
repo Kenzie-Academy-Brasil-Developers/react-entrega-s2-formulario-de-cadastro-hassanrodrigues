@@ -1,16 +1,9 @@
 import { BiErrorAlt } from "react-icons/bi";
 import { Container, Error } from "./styles";
-interface IPasswordProps {
-  id: string;
-  register: any;
-  err: any;
-  label: string;
-  placeholder: string;
- 
- 
-}
+import { IInputProps } from "../../context/AuthContext";
 
-function PasswordLogin({ id, register, err, label, placeholder }:IPasswordProps) {
+
+function PasswordLogin({ id, register, err, label, placeholder }:IInputProps) {
   return (
     <>
       <label htmlFor={id}>{label}</label>

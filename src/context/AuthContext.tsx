@@ -16,6 +16,14 @@ import {
 export interface IAuthProviderProps {
   children: ReactNode;
 }
+export interface IInputProps {
+  id: string;
+  register: any;
+  err: any;
+  label: string;
+  placeholder: string;
+ 
+}
 
 export interface ITech {
   id: string;
